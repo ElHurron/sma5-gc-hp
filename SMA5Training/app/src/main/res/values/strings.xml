@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SMA5Training</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="hint_password">password</string>
-    <string name="hint_email">email</string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Registrieren</string>
+    <string name="hint_password">Passwort</string>
+    <string name="hint_email">E-Mail</string>
+    <string name="sign_in">Anmelden</string>
 </resources>
