@@ -7,14 +7,16 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.sma5.training.models.User
+import androidx.lifecycle.lifecycleScope
+import com.example.sma5.training.api.TrainingApiFactory
+import com.example.sma5.training.ui.TrainingOverviewActivity
 import com.google.firebase.Firebase
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.database
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,7 +59,12 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "signIn:onComplete:" + task.isSuccessful)
 
                 if (task.isSuccessful) {
-                    onAuthSuccess(task.result?.user!!)
+                    var username = usernameFromEmail(task.result.user!!.email!!)
+
+                    lifecycleScope.launch {
+                        var user = TrainingApiFactory.getApi().getUserByName(username)!!
+                        startActivity(TrainingOverviewActivity.intent(this@MainActivity, user))
+                    }
                 } else {
                     Toast.makeText(
                         this@MainActivity,
@@ -82,7 +89,11 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "createUser:onComplete:" + task.isSuccessful)
 
                 if (task.isSuccessful) {
-                    onAuthSuccess(task.result?.user!!)
+                    var username = onAuthSuccess(task.result?.user!!)
+                    lifecycleScope.launch {
+                        var user = TrainingApiFactory.getApi().getUserByName(username)!!
+                        startActivity(TrainingOverviewActivity.intent(this@MainActivity, user))
+                    }
                 } else {
                     Toast.makeText(
                         this@MainActivity,
@@ -93,11 +104,11 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun onAuthSuccess(user: FirebaseUser) {
+    private fun onAuthSuccess(user: FirebaseUser): String {
         val username = usernameFromEmail(user.email!!)
-
         // Write new user
-        writeNewUser(user.uid, username, user.email)
+        TrainingApiFactory.getApi().insertUser(user.uid, username, user.email)
+        return username
     }
 
     private fun usernameFromEmail(email: String): String {
@@ -125,10 +136,5 @@ class MainActivity : AppCompatActivity() {
         }
 
         return result
-    }
-
-    private fun writeNewUser(userId: String, name: String, email: String?) {
-        val user = User(name, email)
-        database.child("users").child(userId).setValue(user)
     }
 }
