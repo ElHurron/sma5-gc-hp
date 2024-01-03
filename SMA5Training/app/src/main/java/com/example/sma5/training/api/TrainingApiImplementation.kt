@@ -1,9 +1,14 @@
 package com.example.sma5.training.api
 
 import android.util.Log
+import com.example.sma5.training.models.Training
 import com.example.sma5.training.models.User
 import com.google.firebase.Firebase
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.database.snapshots
 import com.google.firebase.database.values
@@ -16,7 +21,23 @@ object TrainingApiFactory {
 
 private class TrainingApiImplementation() : TrainingApi {
     private val usersKey: String = "users"
+    private val trainingsKey: String = "trainings"
     private val database: DatabaseReference = Firebase.database.reference
+
+    init {
+        database.child(trainingsKey).addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(s in snapshot.children) {
+                    Log.i("test", s.getValue(Training::class.java).toString())
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                //do nothing
+            }
+
+        })
+    }
 
     override fun insertUser(userId: String, name: String, email: String?) {
         val user = User(name, email)
@@ -36,5 +57,9 @@ private class TrainingApiImplementation() : TrainingApi {
         }
 
         return result;
+    }
+
+    override fun insertTraining(training: Training) {
+        database.child(trainingsKey).child(training.id).setValue(training)
     }
 }

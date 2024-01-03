@@ -1,5 +1,7 @@
 package com.example.sma5.training
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -9,6 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.sma5.training.api.TrainingApiFactory
+import com.example.sma5.training.models.User
 import com.example.sma5.training.ui.TrainingOverviewActivity
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -37,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         btnSignIn = findViewById(R.id.buttonSignIn)
         txtEmail = findViewById(R.id.fieldEmail)
         txtPassword = findViewById(R.id.fieldPassword)
+
+        txtEmail.text.insert(0, "test@gmail.com")
+        txtPassword.text.insert(0, "xxxxxx")
 
         btnSignUp.setOnClickListener{signUp()}
         btnSignIn.setOnClickListener{signIn()}
