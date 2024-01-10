@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "214421590689",
+    "firebase_url": "https://sma5-ch-hp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "sma5-ch-hp",
+    "storage_bucket": "sma5-ch-hp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214421590689:android:0a5454fb9b5291618396e0",
+        "android_client_info": {
+          "package_name": "com.example.sma5.training"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3sShcyaBN0OGUR2WEx2AwzuwiK71rgKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214421590689:android:5d985dd8b0019b448396e0",
+        "android_client_info": {
+          "package_name": "com.google.firebase.quickstart.database"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3sShcyaBN0OGUR2WEx2AwzuwiK71rgKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
