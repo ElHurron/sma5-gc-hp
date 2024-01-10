@@ -8,22 +8,60 @@
     tools:context=".ui.TrainingOverviewActivity">
 
     <Button
-        android:id="@+id/btnAddTraining"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-
-        android:text="Add"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnLogout"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
         android:id="@+id/btnLogout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/deepclearlynicered"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:layout_marginTop="@dimen/distance_medium"
+        android:layout_marginEnd="@dimen/distance_medium"
         android:text="Logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btnAddTraining"
-        app:layout_constraintStart_toEndOf="@id/btnAddTraining" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/distance_xlarge"
+        android:text="Trainigsübersicht"
+        android:textSize="35dp"
+        app:layout_constraintTop_toBottomOf="@id/btnLogout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </TextView>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/selSwipeRefreshLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/distance_large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnAddTraining"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txvViewTitle"
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvTrainings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <ImageButton
+        android:id="@+id/btnAddTraining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="@dimen/distance_small"
+        android:layout_marginBottom="@dimen/distance_large"
+        android:src="@mipmap/plus_img" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

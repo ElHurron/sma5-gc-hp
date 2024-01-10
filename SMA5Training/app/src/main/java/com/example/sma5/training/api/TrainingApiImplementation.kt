@@ -25,18 +25,7 @@ private class TrainingApiImplementation() : TrainingApi {
     private val database: DatabaseReference = Firebase.database.reference
 
     init {
-        database.child(trainingsKey).addValueEventListener(object: ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for(s in snapshot.children) {
-                    Log.i("test", s.getValue(Training::class.java).toString())
-                }
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                //do nothing
-            }
-
-        })
     }
 
     override fun insertUser(userId: String, name: String, email: String?) {
