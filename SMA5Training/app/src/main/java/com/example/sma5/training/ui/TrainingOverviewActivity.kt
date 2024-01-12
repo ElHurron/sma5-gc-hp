@@ -111,6 +111,7 @@ class TrainingOverviewActivity : AppCompatActivity() {
             val txvTitle: TextView = itemView.findViewById(R.id.txvTitle)
             val btnAcceptTraining: ImageButton = itemView.findViewById(R.id.btnAccept)
             val btnDeclineTraining: ImageButton = itemView.findViewById(R.id.btnDecline)
+            val btnEditTraining: ImageButton = itemView.findViewById(R.id.btnEdit)
         }
 
         private var trainings = emptyList<Training>()
@@ -132,6 +133,8 @@ class TrainingOverviewActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.run {
             val training = trainings[position]
             txvTitle.text = training.title;
+
+            btnEditTraining.isVisible = parentView.user.role == Roles.TRAINER
 
             if(training.acceptedUsers.contains(parentView.user.email!!)) {
                 btnAcceptTraining.isVisible = false;

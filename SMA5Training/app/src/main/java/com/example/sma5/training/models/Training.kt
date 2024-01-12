@@ -9,7 +9,7 @@ import java.util.Date
 import java.util.Locale
 import java.util.UUID
 
-var SDF = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+var SDF = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
 var zoneId = ZoneId.of("Europe/Paris")
 @IgnoreExtraProperties
 data class Training(
