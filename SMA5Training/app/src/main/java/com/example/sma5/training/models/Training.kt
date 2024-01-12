@@ -18,6 +18,6 @@ data class Training(
     var description: String = "",
     var creator: String = "",
     var dateTime: String = SDF.format(Date.from(ZonedDateTime.now(zoneId).toInstant())),
-    var acceptedUsers: List<User> = emptyList(),
-    var declinedUsers: List<User> = emptyList(),
+    var acceptedUsers: List<String> = emptyList(),
+    var declinedUsers: List<String> = emptyList(),
 )
