@@ -4,6 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.TrainingDetailsActivity">
+    tools:context=".ui.TrainingDetailsActivity"
+    >
 
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="@dimen/distance_xlarge"
+        android:layout_height="@dimen/distance_xlarge"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/icon_back"
+        android:layout_marginStart="@dimen/distance_small"
+        android:layout_marginTop="@dimen/distance_small"
+        android:importantForAccessibility="no" />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Training #1"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="@id/btnBack"
+        app:layout_constraintBottom_toBottomOf="@id/btnBack"
+        android:layout_marginStart="@dimen/distance_large"
+
+    <TextView
+        android:id="@+id/txvHardFacts"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Hard Facts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginStart="@dimen/distance_medium"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvwTrainingsDetails"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="120dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txvHardFacts"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/my_light_primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            >
+
+
+
+        <ImageView
+            android:id="@+id/imgLocation"
+            android:layout_width="@dimen/distance_large"
+            android:layout_height="@dimen/distance_large"
+            android:src="@mipmap/icon_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@null"
+            android:layout_marginStart="@dimen/distance_medium"
+            android:layout_marginTop="@dimen/distance_small"
+            />
+
+            <TextView
+                android:id="@+id/txvLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Sportplatz Weitra"
+                app:layout_constraintStart_toEndOf="@id/imgLocation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgLocation"
+                app:layout_constraintBottom_toBottomOf="@id/imgLocation"
+                android:layout_marginStart="@dimen/distance_medium"/>
+
+            <ImageView
+                android:id="@+id/imgTime"
+                android:layout_width="@dimen/distance_large"
+                android:layout_height="@dimen/distance_large"
+                android:src="@mipmap/icon_uhr"
+                app:layout_constraintTop_toBottomOf="@id/imgLocation"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/distance_medium"
+                android:layout_marginTop="@dimen/distance_medium"
+                />
+
+            <TextView
+                android:id="@+id/txvTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="19:00 Uhr"
+                app:layout_constraintStart_toEndOf="@id/imgTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgTime"
+                app:layout_constraintBottom_toBottomOf="@id/imgTime"
+                android:layout_marginStart="@dimen/distance_medium"/>
+
+            <ImageView
+                android:id="@+id/imgGroup"
+                android:layout_width="@dimen/distance_large"
+                android:layout_height="@dimen/distance_large"
+                android:src="@mipmap/icon_group"
+                app:layout_constraintTop_toBottomOf="@id/imgTime"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/distance_medium"
+                android:layout_marginTop="@dimen/distance_medium"
+                />
+
+            <TextView
+                android:id="@+id/txvGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="14 haben bisher zugesagt"
+                app:layout_constraintStart_toEndOf="@id/imgGroup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/imgGroup"
+                app:layout_constraintBottom_toBottomOf="@id/imgGroup"
+                android:layout_marginStart="@dimen/distance_medium"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
