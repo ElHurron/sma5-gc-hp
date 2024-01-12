@@ -11,11 +11,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.sma5.training.MainActivity
 import com.example.sma5.training.R
 import com.example.sma5.training.api.TrainingApiFactory
+import com.example.sma5.training.models.Roles
 import com.example.sma5.training.models.Training
 import com.example.sma5.training.models.User
 import com.google.firebase.Firebase
@@ -24,23 +27,26 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 
 class TrainingOverviewActivity : AppCompatActivity() {
 
-    private val trainingsAdapter = TrainingsAdapter()
+    private val trainingsAdapter = TrainingsAdapter(this)
     private lateinit var btnAddTraining: ImageButton
     private lateinit var btnLogout: Button
     private lateinit var srlSwipeRefreshLayout: SwipeRefreshLayout
     private var database = Firebase.database.reference
     private val trainingsKey: String = "trainings"
     private val username get() = intent.getStringExtra(USERNAME) ?: ""
+    lateinit var user: User;
 
     companion object {
         private val ROLE = "Role"
         private val USERNAME = "Username"
         fun intent(context: Context, user: User)
                 = Intent(context, TrainingOverviewActivity::class.java).apply {
+            this.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             putExtra(ROLE, user.role);
             putExtra(USERNAME, user.username)
         }
@@ -57,6 +63,25 @@ class TrainingOverviewActivity : AppCompatActivity() {
         srlSwipeRefreshLayout = findViewById(R.id.selSwipeRefreshLayout)
         srlSwipeRefreshLayout.setOnRefreshListener { srlSwipeRefreshLayout.isRefreshing = false }
 
+        lifecycleScope.launch {
+            user = TrainingApiFactory.getApi().getUserByName(username)!!;
+            btnAddTraining.isVisible = user.role == Roles.TRAINER
+
+            database.child(trainingsKey).addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val trainings = emptyList<Training>().toMutableList()
+                    for(s in snapshot.children) {
+                        trainings += s.getValue(Training::class.java)!!;
+                    }
+                    trainingsAdapter.displayTrainings(trainings)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    //do nothing
+                }
+            })
+        }
+
         btnLogout.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -64,20 +89,6 @@ class TrainingOverviewActivity : AppCompatActivity() {
         }
 
         btnAddTraining.setOnClickListener { addNewTraining() }
-
-        database.child(trainingsKey).addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val trainings = emptyList<Training>().toMutableList()
-                for(s in snapshot.children) {
-                    trainings += s.getValue(Training::class.java)!!;
-                }
-                trainingsAdapter.displayTrainings(trainings)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                //do nothing
-            }
-        })
     }
 
     private fun addNewTraining() {
@@ -89,10 +100,17 @@ class TrainingOverviewActivity : AppCompatActivity() {
     }
 
 
-    private class TrainingsAdapter: RecyclerView.Adapter<TrainingsAdapter.ViewHolder>()
+    private class TrainingsAdapter: RecyclerView.Adapter<TrainingsAdapter.ViewHolder>
     {
+        private val parentView: TrainingOverviewActivity;
+        constructor(parent: TrainingOverviewActivity) {
+            parentView = parent;
+        }
+
         private class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
             val txvTitle: TextView = itemView.findViewById(R.id.txvTitle)
+            val btnAcceptTraining: ImageButton = itemView.findViewById(R.id.btnAccept)
+            val btnDeclineTraining: ImageButton = itemView.findViewById(R.id.btnDecline)
         }
 
         private var trainings = emptyList<Training>()
@@ -115,11 +133,36 @@ class TrainingOverviewActivity : AppCompatActivity() {
             val training = trainings[position]
             txvTitle.text = training.title;
 
-            /*itemView.setOnClickListener {
+            if(training.acceptedUsers.contains(parentView.user.email!!)) {
+                btnAcceptTraining.isVisible = false;
+            }
+
+            if(training.declinedUsers.contains(parentView.user.email!!)) {
+                btnDeclineTraining.isVisible = false;
+            }
+
+            btnAcceptTraining.setOnClickListener {
+                updateTraining(training, true)
+                btnAcceptTraining.isVisible = false
+                btnDeclineTraining.isVisible = true
+            }
+            btnDeclineTraining.setOnClickListener {
+                updateTraining(training, false)
+                btnDeclineTraining.isVisible = false
+                btnAcceptTraining.isVisible = true
+            }
+
+            itemView.setOnClickListener {
                 itemView.context.run {
-                    startActivity(CanteenDetailsActivity.intent(this, canteen.id))
+                    startActivity(TrainingDetailsActivity.intent(this, training, parentView.user.username!!))
                 }
-            }*/
+            }
+        }
+
+        private fun updateTraining(training: Training, accepted: Boolean) {
+            parentView.lifecycleScope.launch {
+                TrainingApiFactory.getApi().addUserToTraining(training.id, parentView.user, accepted);
+            }
         }
 
         fun displayTrainings(canteens: List<Training>) {
