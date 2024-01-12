@@ -18,7 +18,7 @@
         android:layout_marginStart="@dimen/distance_small"
         android:layout_marginTop="@dimen/distance_small"
         android:importantForAccessibility="no" />
-    
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
