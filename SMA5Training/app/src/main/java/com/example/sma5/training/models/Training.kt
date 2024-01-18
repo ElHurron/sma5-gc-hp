@@ -15,8 +15,9 @@ var zoneId = ZoneId.of("Europe/Paris")
 data class Training(
     var id: String = UUID.randomUUID().toString(),
     var title: String? = "",
-    var description: String = "",
+    var duration: Int = 0,
     var creator: String = "",
+    var location: String = "",
     var dateTime: String = SDF.format(Date.from(ZonedDateTime.now(zoneId).toInstant())),
     var acceptedUsers: List<String> = emptyList(),
     var declinedUsers: List<String> = emptyList(),

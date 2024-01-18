@@ -92,11 +92,9 @@ class TrainingOverviewActivity : AppCompatActivity() {
     }
 
     private fun addNewTraining() {
-        var t = Training()
-        t.title = "test"
-        t.description = "test"
-        t.creator = username
-        TrainingApiFactory.getApi().insertTraining(t)
+        var intent=CreateTrainingActivity.intent(this, username)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
     }
 
 
