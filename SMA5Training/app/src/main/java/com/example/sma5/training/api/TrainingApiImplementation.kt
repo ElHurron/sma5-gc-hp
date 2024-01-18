@@ -68,7 +68,7 @@ private class TrainingApiImplementation() : TrainingApi {
             training!!.acceptedUsers = training.acceptedUsers.minus(user.email!!);
             training!!.declinedUsers = training.declinedUsers.plus(user.email!!);
         }
-        insertTraining(training);
+        insertOrUpdateTraining(training);
     }
 
     override suspend fun removeUserFromTraining(id: String, user: User) {
@@ -85,10 +85,10 @@ private class TrainingApiImplementation() : TrainingApi {
         } else {
             training.declinedUsers.minus(user.username);
         }
-        insertTraining(training);
+        insertOrUpdateTraining(training);
     }
 
-    override fun insertTraining(training: Training) {
+    override fun insertOrUpdateTraining(training: Training) {
         database.child(trainingsKey).child(training.id).setValue(training)
     }
 
