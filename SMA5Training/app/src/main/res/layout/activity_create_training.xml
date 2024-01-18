@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".create_training">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="@dimen/distance_xlarge"
+        android:layout_height="@dimen/distance_xlarge"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/icon_back"
+        android:layout_marginStart="@dimen/distance_small"
+        android:layout_marginTop="4dp"
+        android:importantForAccessibility="no" />
+
+    <TextView
+        android:id="@+id/txvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Training anlegen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/distance_medium" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvwEditTraining"
+        android:layout_width="0dp"
+        android:layout_height="620dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/my_light_primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            >
+
+            <TextView
+                android:id="@+id/txvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trainingsort"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="22dp"
+                android:layout_marginTop="@dimen/distance_small"/>
+
+            <EditText
+                android:id="@+id/edtLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txvLocation"/>
+
+            <TextView
+                android:id="@+id/txvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Datum"
+                app:layout_constraintTop_toBottomOf="@id/edtLocation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="22dp"
+                android:layout_marginTop="@dimen/distance_medium"/>
+
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                app:layout_constraintTop_toBottomOf="@id/txvDate"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="-30dp"
+                />
+
+
+            <TextView
+                android:id="@+id/txvTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Uhrzeit (Start)"
+                app:layout_constraintTop_toBottomOf="@id/datePicker"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="22dp"
+                android:layout_marginTop="@dimen/distance_small"/>
+
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:timePickerMode="spinner"
+                app:layout_constraintTop_toBottomOf="@id/txvTime"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="-30dp"
+                />
+
+            <TextView
+                android:id="@+id/txvDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dauer (in h)"
+                app:layout_constraintTop_toBottomOf="@id/timePicker"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="22dp"
+                android:layout_marginTop="@dimen/distance_small"/>
+
+            <EditText
+                android:id="@+id/edtDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txvDuration"
+                android:inputType="number"
+                />
+
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/edtDuration"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete"
+                android:text="Speichern"
+                android:layout_marginTop="@dimen/distance_small"
+                android:backgroundTint="@color/black"/>
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/btnSave"
+                app:layout_constraintStart_toEndOf="@id/btnSave"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Verwerfen"
+                android:backgroundTint="@color/black"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
