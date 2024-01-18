@@ -79,7 +79,7 @@ class CreateTrainingActivity : AppCompatActivity() {
         newTraining.dateTime = SDF.format(calendar.time)
         newTraining.location = edtLocation.text.toString()
 
-        TrainingApiFactory.getApi().insertTraining(newTraining)
+        TrainingApiFactory.getApi().insertOrUpdateTraining(newTraining)
     }
 
     private fun backToOverview() {

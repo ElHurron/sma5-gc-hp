@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,11 +23,9 @@ import com.example.sma5.training.models.User
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
 
 class TrainingOverviewActivity : AppCompatActivity() {
 
@@ -151,6 +148,14 @@ class TrainingOverviewActivity : AppCompatActivity() {
                 updateTraining(training, false)
                 btnDeclineTraining.isVisible = false
                 btnAcceptTraining.isVisible = true
+            }
+
+            btnEditTraining.setOnClickListener{
+                itemView.context.run {
+                    var intent = EditTrainingActivity.intent(this, parentView.user.username!!, training)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    parentView.startActivity(intent)
+                }
             }
 
             itemView.setOnClickListener {
