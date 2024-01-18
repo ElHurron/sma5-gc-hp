@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.sma5.training.R
 import com.example.sma5.training.api.TrainingApiFactory
 import com.example.sma5.training.models.Training
-import com.example.sma5.training.models.User
 import kotlinx.coroutines.launch
 
 class TrainingDetailsActivity : AppCompatActivity() {
@@ -18,7 +17,8 @@ class TrainingDetailsActivity : AppCompatActivity() {
     private lateinit var training: Training;
 
     private lateinit var txvGroup: TextView
-    private lateinit var txvDate: TextView
+    private lateinit var txvDateTime: TextView
+    private lateinit var txvDuration: TextView
     private lateinit var txvLocation: TextView
     private lateinit var txvTitle: TextView
     private lateinit var btnBack: ImageButton
@@ -36,16 +36,18 @@ class TrainingDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_training_details)
 
-        txvDate = findViewById(R.id.txvTime)
+        txvDateTime = findViewById(R.id.txvDate)
         txvLocation = findViewById(R.id.txvLocation)
         txvGroup = findViewById(R.id.txvGroup)
+        txvDuration = findViewById(R.id.txvTime)
         txvTitle = findViewById(R.id.txvTrainingTitle)
         btnBack = findViewById(R.id.btnBack)
 
         lifecycleScope.launch {
             training = TrainingApiFactory.getApi().getTraining(intent.getStringExtra(Id)!!)!!
-            txvDate.text = training.dateTime
+            txvDateTime.text = training.dateTime.replace(" ", "\n") + " Uhr"
             txvLocation.text = training.location;
+            txvDuration.text = training.duration.toString() + " Stunden"
             txvGroup.text = training.acceptedUsers.size.toString() + " haben zugesagt!"
             txvTitle.text = training.title
         }

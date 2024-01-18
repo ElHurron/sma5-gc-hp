@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/deepclearlynicered"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:layout_marginTop="@dimen/distance_medium"
         android:layout_marginEnd="@dimen/distance_medium"
         android:text="Logout"
@@ -27,6 +27,7 @@
         android:layout_marginBottom="@dimen/distance_xlarge"
         android:text="Trainigsübersicht"
         android:textSize="35dp"
+        android:layout_marginTop="@dimen/distance_large"
         app:layout_constraintTop_toBottomOf="@id/btnLogout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
