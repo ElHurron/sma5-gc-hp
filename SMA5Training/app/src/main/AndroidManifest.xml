@@ -13,7 +13,7 @@
         android:theme="@style/Theme.SMA5Training"
         tools:targetApi="31">
         <activity
-            android:name=".create_training"
+            android:name=".ui.CreateTrainingActivity"
             android:exported="false" />
         <activity
             android:name=".activity_training_details_trainer"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".create_training">
+    tools:context=".ui.CreateTrainingActivity">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -34,7 +34,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvwEditTraining"
         android:layout_width="0dp"
-        android:layout_height="620dp"
+        android:layout_height="700dp"
         android:layout_margin="16dp"
         android:layout_marginTop="100dp"
         app:cardCornerRadius="16dp"
@@ -53,15 +53,34 @@
             >
 
             <TextView
-                android:id="@+id/txvLocation"
+                android:id="@+id/txvTrainingTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Trainingsort"
+                android:text="Titel"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textSize="22dp"
                 android:layout_marginTop="@dimen/distance_small"/>
+
+            <EditText
+                android:id="@+id/edtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txvTrainingTitle"/>
+
+            <TextView
+                android:id="@+id/txvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trainingsort"
+                app:layout_constraintTop_toBottomOf="@id/edtTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="22dp"
+                android:layout_marginTop="@dimen/distance_medium"/>
 
             <EditText
                 android:id="@+id/edtLocation"
@@ -112,7 +131,7 @@
                 android:timePickerMode="spinner"
                 app:layout_constraintTop_toBottomOf="@id/txvTime"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="-30dp"
+                android:layout_marginStart="-90dp"
                 />
 
             <TextView

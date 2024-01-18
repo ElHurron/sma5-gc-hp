@@ -45,7 +45,7 @@ class TrainingDetailsActivity : AppCompatActivity() {
         lifecycleScope.launch {
             training = TrainingApiFactory.getApi().getTraining(intent.getStringExtra(Id)!!)!!
             txvDate.text = training.dateTime
-            txvLocation.text = training.description;
+            txvLocation.text = training.location;
             txvGroup.text = training.acceptedUsers.size.toString() + " haben zugesagt!"
             txvTitle.text = training.title
         }
