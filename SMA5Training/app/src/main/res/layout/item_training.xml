@@ -34,10 +34,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txvTitle"
-            android:background="none"
+            android:backgroundTint="@color/my_light_primary"
             app:layout_constraintBottom_toBottomOf="@id/txvTitle"
             android:layout_marginStart="@dimen/distance_large"
-            android:src="@drawable/müllkübel"
+            android:src="@drawable/muellkuebel"
             android:importantForAccessibility="no"/>
 
         <ImageButton
@@ -79,7 +79,7 @@
             app:layout_constraintEnd_toStartOf="@id/btnDecline"
             android:scaleX="0.8"
             android:scaleY="0.8"
-            android:src="@drawable/häcken_umr"
+            android:src="@drawable/haecken_umr"
             android:importantForAccessibility="no" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
