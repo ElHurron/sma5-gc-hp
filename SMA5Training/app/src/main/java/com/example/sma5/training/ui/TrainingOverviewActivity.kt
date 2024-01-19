@@ -115,6 +115,7 @@ class TrainingOverviewActivity : AppCompatActivity() {
             val btnAcceptTraining: ImageButton = itemView.findViewById(R.id.btnAccept)
             val btnDeclineTraining: ImageButton = itemView.findViewById(R.id.btnDecline)
             val btnEditTraining: ImageButton = itemView.findViewById(R.id.btnEdit)
+            val btnDelete: ImageButton = itemView.findViewById(R.id.btnDelete)
         }
 
         private var trainings = emptyList<Training>()
@@ -136,6 +137,10 @@ class TrainingOverviewActivity : AppCompatActivity() {
             txvTitle.text = training.title;
 
             btnEditTraining.isVisible =
+                (parentView.user.role == Roles.TRAINER) &&
+                        (training.creator == parentView.user.email!!)
+
+            btnDelete.isVisible =
                 (parentView.user.role == Roles.TRAINER) &&
                         (training.creator == parentView.user.email!!)
 
@@ -163,6 +168,12 @@ class TrainingOverviewActivity : AppCompatActivity() {
                     var intent = EditTrainingActivity.intent(this, parentView.user.username!!, training)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     parentView.startActivity(intent)
+                }
+            }
+
+            btnDelete.setOnClickListener {
+                parentView.lifecycleScope.launch {
+                    TrainingApiFactory.getApi().removeTraining(training.id)
                 }
             }
 

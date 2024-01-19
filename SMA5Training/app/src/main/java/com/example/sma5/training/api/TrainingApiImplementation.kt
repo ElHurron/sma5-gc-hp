@@ -47,6 +47,10 @@ private class TrainingApiImplementation() : TrainingApi {
         return result;
     }
 
+    override suspend fun removeTraining(id: String) {
+        val snapshot = database.child(trainingsKey).child(id).removeValue().await()
+    }
+
     override suspend fun getTraining(id: String): Training? {
         val snapshot = database.child(trainingsKey).child(id)
             .get()

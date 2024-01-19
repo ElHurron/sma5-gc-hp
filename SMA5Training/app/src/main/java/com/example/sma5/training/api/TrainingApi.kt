@@ -7,6 +7,8 @@ interface TrainingApi {
     fun insertUser(userId: String, name: String, email: String?, trainer: Boolean)
     suspend fun getUserByName(name: String): User?
 
+    suspend fun removeTraining(id: String)
+
     fun insertOrUpdateTraining(training: Training)
 
     suspend fun getTraining(id: String): Training?

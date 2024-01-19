@@ -29,6 +29,18 @@
         </TextView>
 
         <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:backgroundTint="@color/my_light_primary"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txvTitle"
+            app:layout_constraintBottom_toBottomOf="@id/txvTitle"
+            android:layout_marginStart="@dimen/distance_large"
+            android:src="@mipmap/bing_img"
+            android:importantForAccessibility="no" />
+
+        <ImageButton
             android:id="@+id/btnEdit"
             android:layout_marginTop="@dimen/distance_medium"
             android:layout_width="wrap_content"
