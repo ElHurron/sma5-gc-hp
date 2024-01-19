@@ -5,4 +5,12 @@
     <dimen name="distance_large">32dp</dimen>
     <dimen name="distance_xlarge">48dp</dimen>
     <dimen name="distance_xxlarge">64dp</dimen>
+    <dimen name="distance_xs">4dp</dimen>
+    <dimen name="font_size_normal">22dp</dimen>
+    <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_normal">15dp</dimen>
+    <dimen name="picker_width">300dp</dimen>
+    <dimen name="picker_height">150dp</dimen>
+    <dimen name="font_size_small">20dp</dimen>
+    <dimen name="font_size_big">24dp</dimen>
 </resources>

@@ -15,14 +15,14 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@mipmap/icon_back"
         android:layout_marginStart="@dimen/distance_small"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="@dimen/distance_xs"
         android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/txvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Training anlegen"
+        tools:text="Training #1 bearbeiten"
         app:layout_constraintStart_toEndOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="@id/btnBack"
         android:textSize="20dp"
@@ -34,11 +34,11 @@
         android:id="@+id/cvwEditTraining"
         android:layout_width="0dp"
         android:layout_height="740dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/distance_medium"
+        android:layout_marginEnd="@dimen/distance_medium"
         android:layout_marginTop="30dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        app:cardCornerRadius="@dimen/distance_medium"
+        app:cardElevation="@dimen/distance_xs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txvTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,20 +47,20 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
+            android:paddingTop="@dimen/padding_small"
+            android:paddingStart="@dimen/padding_normal"
+            android:paddingEnd="@dimen/padding_normal"
             >
 
             <TextView
                 android:id="@+id/txvTrainingTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Titel"
+                android:text="@string/create_title"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="22dp"
+                android:textSize="@dimen/font_size_normal"
                 android:layout_marginTop="@dimen/distance_small"/>
 
             <EditText
@@ -75,11 +75,11 @@
                 android:id="@+id/txvLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Trainingsort"
+                android:text="@string/create_location"
                 app:layout_constraintTop_toBottomOf="@id/edtTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="22dp"
+                android:textSize="@dimen/font_size_normal"
                 android:layout_marginTop="@dimen/distance_medium"/>
 
             <EditText
@@ -94,17 +94,17 @@
                 android:id="@+id/txvDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Datum"
+                android:text="@string/create_date"
                 app:layout_constraintTop_toBottomOf="@id/edtLocation"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="22dp"
+                android:textSize="@dimen/font_size_normal"
                 android:layout_marginTop="@dimen/distance_medium"/>
 
             <DatePicker
                 android:id="@+id/datePicker"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_width="@dimen/picker_width"
+                android:layout_height="@dimen/picker_height"
                 android:calendarViewShown="false"
                 android:datePickerMode="spinner"
                 app:layout_constraintTop_toBottomOf="@id/txvDate"
@@ -117,17 +117,17 @@
                 android:id="@+id/txvTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Uhrzeit (Start)"
+                android:text="@string/create_time_start"
                 app:layout_constraintTop_toBottomOf="@id/datePicker"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="22dp"
+                android:textSize="@dimen/font_size_normal"
                 android:layout_marginTop="@dimen/distance_small"/>
 
             <TimePicker
                 android:id="@+id/timePicker"
-                android:layout_width="300dp"
-                android:layout_height="150dp"
+                android:layout_width="@dimen/picker_width"
+                android:layout_height="@dimen/picker_height"
                 android:timePickerMode="spinner"
                 app:layout_constraintTop_toBottomOf="@id/txvTime"
                 app:layout_constraintStart_toStartOf="parent"
@@ -138,10 +138,10 @@
                 android:id="@+id/txvDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dauer (in h)"
+                android:text="@string/create_duration"
                 app:layout_constraintTop_toBottomOf="@id/timePicker"
                 app:layout_constraintStart_toStartOf="parent"
-                android:textSize="22dp"
+                android:textSize="@dimen/font_size_normal"
                 android:layout_marginTop="@dimen/distance_small"/>
 
             <EditText
@@ -162,7 +162,7 @@
                 app:layout_constraintTop_toBottomOf="@id/edtDuration"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btnDelete"
-                android:text="Speichern"
+                android:text="@string/create_save"
                 android:layout_marginTop="@dimen/distance_small"
                 android:backgroundTint="@color/black"/>
 
@@ -173,7 +173,7 @@
                 app:layout_constraintTop_toTopOf="@id/btnSave"
                 app:layout_constraintStart_toEndOf="@id/btnSave"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="Verwerfen"
+                android:text="@string/create_delete"
                 android:backgroundTint="@color/black"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,4 +4,15 @@
     <string name="hint_password">Passwort</string>
     <string name="hint_email">E-Mail</string>
     <string name="sign_in">Anmelden</string>
+    <string name="trainings_details">Details</string>
+    <string name="create_training">Training anlegen</string>
+    <string name="create_title">Titel</string>
+    <string name="create_location">Trainingsort</string>
+    <string name="create_date">Datum</string>
+    <string name="create_time_start">Uhrzeit (Start)</string>
+    <string name="create_duration">Dauer (in h)</string>
+    <string name="create_save">Speichern</string>
+    <string name="create_delete">Verwerfen</string>
+    <string name="trainigs_overview">Trainigsübersicht</string>
+    <string name="btn_logout">Logout</string>
 </resources>
