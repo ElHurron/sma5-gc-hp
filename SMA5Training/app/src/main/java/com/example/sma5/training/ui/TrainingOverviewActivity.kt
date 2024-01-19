@@ -119,20 +119,18 @@ class TrainingOverviewActivity : AppCompatActivity() {
 
         private var trainings = emptyList<Training>()
 
-        //also possible as one-liner
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             return ViewHolder(
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.item_training, parent, false))
         }
 
-        //override fun getItemCount() = canteens.size
+
         override fun getItemCount(): Int {
             return trainings.size
         }
 
-        //combine view and datamodel
-        //holder.run makes holder as base variable (don't need to write holder)
         override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.run {
             val training = trainings[position]
             txvTitle.text = training.title;
