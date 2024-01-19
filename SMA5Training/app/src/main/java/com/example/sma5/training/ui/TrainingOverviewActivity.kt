@@ -18,6 +18,7 @@ import com.example.sma5.training.MainActivity
 import com.example.sma5.training.R
 import com.example.sma5.training.api.TrainingApiFactory
 import com.example.sma5.training.models.Roles
+import com.example.sma5.training.models.SDF
 import com.example.sma5.training.models.Training
 import com.example.sma5.training.models.User
 import com.google.firebase.Firebase
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class TrainingOverviewActivity : AppCompatActivity() {
 
@@ -68,8 +70,14 @@ class TrainingOverviewActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val trainings = emptyList<Training>().toMutableList()
                     for(s in snapshot.children) {
-                        trainings += s.getValue(Training::class.java)!!;
+                        val training = s.getValue(Training::class.java)!!
+                        if(SDF.parse(training.dateTime).after(Calendar.getInstance().time)) {
+                            trainings += training
+                        }
                     }
+
+                    val trainingsAdapter = TrainingsAdapter(this@TrainingOverviewActivity)
+                    recyclerView.adapter = trainingsAdapter
                     trainingsAdapter.displayTrainings(trainings)
                 }
 
@@ -179,9 +187,13 @@ class TrainingOverviewActivity : AppCompatActivity() {
             }
         }
 
-        fun displayTrainings(canteens: List<Training>) {
-            this.trainings = canteens
+        fun displayTrainings(trainings: List<Training>) {
+            val comparator = Comparator<Training>{t1, t2 -> SDF.parse(t1.dateTime).compareTo(SDF.parse(t2.dateTime))}
+
+            this.trainings = trainings.sortedWith(comparator)
+
             notifyDataSetChanged()
+
         }
     }
 }

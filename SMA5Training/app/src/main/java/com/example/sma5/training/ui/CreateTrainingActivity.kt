@@ -80,6 +80,7 @@ class CreateTrainingActivity : AppCompatActivity() {
 
         newTraining.dateTime = SDF.format(calendar.time)
         newTraining.location = edtLocation.text.toString()
+        newTraining.acceptedUsers += intent.getStringExtra(EMail)!!
 
         TrainingApiFactory.getApi().insertOrUpdateTraining(newTraining)
     }
