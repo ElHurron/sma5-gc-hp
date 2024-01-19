@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.example.sma5.training.R
@@ -19,6 +20,10 @@ class TrainingDetailsTrainerActivity : AppCompatActivity() {
 
     private lateinit var txvAcceptedValues: TextView
     private lateinit var txvDeclinedValues: TextView
+    private lateinit var txvAccepted: TextView
+    private lateinit var txvDeclined: TextView
+    private lateinit var imgGroup: ImageView
+    private lateinit var imgDeclinedGroup: ImageView
     private lateinit var txvDateTime: TextView
     private lateinit var txvDuration: TextView
     private lateinit var txvLocation: TextView
@@ -61,6 +66,10 @@ class TrainingDetailsTrainerActivity : AppCompatActivity() {
         txvLocation = findViewById(R.id.txvLocation)
         txvAcceptedValues = findViewById(R.id.txvAcceptedValues)
         txvDeclinedValues = findViewById(R.id.txvDeclinedValues)
+        txvAccepted = findViewById(R.id.txvAccepted)
+        txvDeclined = findViewById(R.id.txvDeclined)
+        imgGroup = findViewById(R.id.imgGroup)
+        imgDeclinedGroup = findViewById(R.id.imgGroupDeclined)
         txvDuration = findViewById(R.id.txvTime)
         txvTitle = findViewById(R.id.txvTitle)
         btnBack = findViewById(R.id.btnBack)
@@ -79,10 +88,26 @@ class TrainingDetailsTrainerActivity : AppCompatActivity() {
                txvAcceptedValues.setOnClickListener{
                    showPlayers(training.acceptedUsers)
                }
+
+                txvAccepted.setOnClickListener{
+                    showPlayers(training.acceptedUsers)
+                }
+
+                imgGroup.setOnClickListener {
+                    showPlayers(training.acceptedUsers)
+                }
             }
 
             if(training.declinedUsers.isNotEmpty()) {
                 txvDeclinedValues.setOnClickListener{
+                    showPlayers(training.declinedUsers)
+                }
+
+                txvDeclined.setOnClickListener {
+                    showPlayers(training.declinedUsers)
+                }
+
+                imgDeclinedGroup.setOnClickListener {
                     showPlayers(training.declinedUsers)
                 }
             }
