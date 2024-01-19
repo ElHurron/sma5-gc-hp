@@ -4,7 +4,7 @@ import com.example.sma5.training.models.Training
 import com.example.sma5.training.models.User
 
 interface TrainingApi {
-    fun insertUser(userId: String, name: String, email: String?)
+    fun insertUser(userId: String, name: String, email: String?, trainer: Boolean)
     suspend fun getUserByName(name: String): User?
 
     fun insertOrUpdateTraining(training: Training)

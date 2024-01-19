@@ -48,6 +48,17 @@
         app:layout_constraintStart_toStartOf="@+id/fieldEmail"
         app:layout_constraintTop_toBottomOf="@+id/fieldEmail" />
 
+    <CheckBox
+        android:id="@+id/chbSignUpAsTrainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Als Trainer registrieren"
+        app:layout_constraintTop_toBottomOf="@id/fieldPassword"
+        app:layout_constraintEnd_toEndOf="@id/fieldPassword"
+        android:layout_marginEnd="@dimen/distance_large"
+        >
+    </CheckBox>
+
     <Button
         android:id="@+id/buttonSignIn"
         android:layout_width="0dp"
@@ -57,7 +68,7 @@
         android:layout_marginTop="@dimen/distance_medium"
         android:text="@string/sign_in"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldPassword"
+        app:layout_constraintTop_toBottomOf="@+id/chbSignUpAsTrainer"
         app:layout_constraintEnd_toStartOf="@id/buttonSignUp"/>
 
     <Button

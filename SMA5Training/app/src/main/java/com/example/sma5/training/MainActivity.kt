@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnSignIn: Button
     private lateinit var txtEmail: EditText
     private lateinit var txtPassword: EditText
+    private lateinit var chbTrainer: CheckBox
 
     private lateinit var database: DatabaseReference
     private lateinit var auth: FirebaseAuth
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         btnSignIn = findViewById(R.id.buttonSignIn)
         txtEmail = findViewById(R.id.fieldEmail)
         txtPassword = findViewById(R.id.fieldPassword)
+        chbTrainer = findViewById(R.id.chbSignUpAsTrainer)
 
         txtEmail.text.insert(0, "test@gmail.com")
         txtPassword.text.insert(0, "xxxxxx")
@@ -95,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "createUser:onComplete:" + task.isSuccessful)
 
                 if (task.isSuccessful) {
-                    var username = onAuthSuccess(task.result?.user!!)
+                    var username = onAuthSuccess(task.result?.user!!, chbTrainer.isChecked)
                     lifecycleScope.launch {
                         var user = TrainingApiFactory.getApi().getUserByName(username)!!
                         startActivity(TrainingOverviewActivity.intent(this@MainActivity, user))
@@ -110,10 +113,10 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    private fun onAuthSuccess(user: FirebaseUser): String {
+    private fun onAuthSuccess(user: FirebaseUser, trainer: Boolean): String {
         val username = usernameFromEmail(user.email!!)
         // Write new user
-        TrainingApiFactory.getApi().insertUser(user.uid, username, user.email)
+        TrainingApiFactory.getApi().insertUser(user.uid, username, user.email, trainer)
         return username
     }
 

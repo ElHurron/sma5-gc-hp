@@ -1,6 +1,7 @@
 package com.example.sma5.training.api
 
 import android.util.Log
+import com.example.sma5.training.models.Roles
 import com.example.sma5.training.models.Training
 import com.example.sma5.training.models.User
 import com.google.firebase.Firebase
@@ -23,8 +24,11 @@ private class TrainingApiImplementation() : TrainingApi {
 
     }
 
-    override fun insertUser(userId: String, name: String, email: String?) {
+    override fun insertUser(userId: String, name: String, email: String?, trainer: Boolean) {
         val user = User(name, email)
+        if(trainer) {
+            user.role = Roles.TRAINER
+        }
         database.child(usersKey).child(userId).setValue(user)
     }
 
