@@ -16,7 +16,7 @@
             android:name=".ui.CreateTrainingActivity"
             android:exported="false" />
         <activity
-            android:name=".activity_training_details_trainer"
+            android:name=".ui.TrainingDetailsTrainerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.EditTrainingActivity"

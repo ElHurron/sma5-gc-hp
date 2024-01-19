@@ -30,10 +30,12 @@ class CreateTrainingActivity : AppCompatActivity() {
 
     companion object {
         private val UserName = "Username"
-        fun intent(context: Context, username: String)
+        private val EMail = "EMail"
+        fun intent(context: Context, username: String, email: String)
                 = Intent(context, CreateTrainingActivity::class.java).apply {
             this.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             putExtra(UserName, username)
+            putExtra(EMail, email)
         }
     }
 
@@ -63,7 +65,7 @@ class CreateTrainingActivity : AppCompatActivity() {
     private fun saveTraining() {
 
         var newTraining = Training()
-        newTraining.creator = intent.getStringExtra(UserName)!!
+        newTraining.creator = intent.getStringExtra(EMail)!!
         newTraining.title = edtTrainingTitle.text.toString()
         newTraining.duration = edtDuration.text.toString().toInt()
 

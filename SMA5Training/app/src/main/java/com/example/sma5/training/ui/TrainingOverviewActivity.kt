@@ -35,7 +35,7 @@ class TrainingOverviewActivity : AppCompatActivity() {
     private lateinit var srlSwipeRefreshLayout: SwipeRefreshLayout
     private var database = Firebase.database.reference
     private val trainingsKey: String = "trainings"
-    private val username get() = intent.getStringExtra(USERNAME) ?: ""
+    public val username get() = intent.getStringExtra(USERNAME) ?: ""
     lateinit var user: User;
 
     companion object {
@@ -89,7 +89,7 @@ class TrainingOverviewActivity : AppCompatActivity() {
     }
 
     private fun addNewTraining() {
-        var intent=CreateTrainingActivity.intent(this, username)
+        var intent=CreateTrainingActivity.intent(this, username, user.email!!)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
@@ -129,7 +129,9 @@ class TrainingOverviewActivity : AppCompatActivity() {
             val training = trainings[position]
             txvTitle.text = training.title;
 
-            btnEditTraining.isVisible = parentView.user.role == Roles.TRAINER
+            btnEditTraining.isVisible =
+                (parentView.user.role == Roles.TRAINER) &&
+                        (training.creator == parentView.user.email!!)
 
             if(training.acceptedUsers.contains(parentView.user.email!!)) {
                 btnAcceptTraining.isVisible = false;
@@ -160,7 +162,13 @@ class TrainingOverviewActivity : AppCompatActivity() {
 
             itemView.setOnClickListener {
                 itemView.context.run {
-                    startActivity(TrainingDetailsActivity.intent(this, training, parentView.user.username!!))
+                    if (parentView.user.role == Roles.TRAINER && training.creator == parentView.user.email!!) {
+                        var intent = TrainingDetailsTrainerActivity.intent(this, training, parentView.user.username!!)
+                        startActivity(intent)
+                    } else {
+                        var intent = TrainingDetailsActivity.intent(this, training, parentView.user.username!!)
+                        startActivity(intent)
+                    }
                 }
             }
         }
