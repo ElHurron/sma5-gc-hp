@@ -42,14 +42,16 @@
 
         <ImageButton
             android:id="@+id/btnEdit"
-            android:layout_marginTop="@dimen/distance_medium"
+            android:layout_marginTop="4dp"
             android:layout_width="wrap_content"
             android:backgroundTint="@color/my_light_primary"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/txvTitle"
             app:layout_constraintEnd_toEndOf="parent"
+            android:scaleY="0.48"
+            android:scaleX="0.48"
             app:layout_constraintStart_toEndOf="@id/btnDecline"
-            android:src="@mipmap/edit_img"
+            android:src="@drawable/bleistift"
             android:importantForAccessibility="no" />
 
         <ImageButton
@@ -61,7 +63,9 @@
             app:layout_constraintTop_toBottomOf="@id/txvTitle"
             app:layout_constraintStart_toEndOf="@id/btnAccept"
             app:layout_constraintEnd_toStartOf="@id/btnEdit"
-            android:src="@mipmap/x_img"
+            android:scaleY="0.8"
+            android:scaleX="0.8"
+            android:src="@drawable/x_umr"
             android:importantForAccessibility="no" />
 
         <ImageButton
@@ -73,7 +77,9 @@
             app:layout_constraintTop_toBottomOf="@id/txvTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnDecline"
-            android:src="@mipmap/hacken_img"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:src="@drawable/häcken_umr"
             android:importantForAccessibility="no" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

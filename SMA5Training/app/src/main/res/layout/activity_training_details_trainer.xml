@@ -9,12 +9,14 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="@dimen/distance_xlarge"
-        android:layout_height="@dimen/distance_xlarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/icon_back"
+        android:src="@drawable/pfeil"
+        android:scaleY="0.7"
+        android:scaleX="0.7"
         android:layout_marginStart="@dimen/distance_small"
         android:layout_marginTop="@dimen/distance_small"
         android:importantForAccessibility="no" />
@@ -36,7 +38,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvwTrainingsDetails"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="430dp"
         android:layout_margin="@dimen/distance_medium"
         android:layout_marginTop="120dp"
         app:cardCornerRadius="@dimen/distance_medium"
@@ -54,9 +56,9 @@
 
             <ImageView
                 android:id="@+id/imgLocation"
-                android:layout_width="@dimen/distance_xxlarge"
-                android:layout_height="@dimen/distance_xxlarge"
-                android:src="@mipmap/icon_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/location"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@null"
@@ -78,9 +80,9 @@
 
             <ImageView
                 android:id="@+id/imgCalendar"
-                android:layout_width="@dimen/distance_xxlarge"
-                android:layout_height="@dimen/distance_xxlarge"
-                android:src="@mipmap/icon_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/kalender"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txvLocation"
                 android:contentDescription="@null"
@@ -102,9 +104,9 @@
 
             <ImageView
                 android:id="@+id/imgTime"
-                android:layout_width="@dimen/distance_xxlarge"
-                android:layout_height="@dimen/distance_xxlarge"
-                android:src="@mipmap/icon_uhr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/uhr"
                 app:layout_constraintTop_toBottomOf="@id/imgCalendar"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/distance_medium"
@@ -125,9 +127,9 @@
 
             <ImageView
                 android:id="@+id/imgGroup"
-                android:layout_width="@dimen/distance_xxlarge"
-                android:layout_height="@dimen/distance_xxlarge"
-                android:src="@mipmap/icon_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gruppe"
                 app:layout_constraintTop_toBottomOf="@id/imgTime"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/distance_medium"
@@ -162,9 +164,9 @@
 
             <ImageView
                 android:id="@+id/imgGroupDeclined"
-                android:layout_width="@dimen/distance_xxlarge"
-                android:layout_height="@dimen/distance_xxlarge"
-                android:src="@mipmap/icon_group_declined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/gruppe_declined"
                 app:layout_constraintTop_toBottomOf="@id/imgGroup"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/distance_medium"

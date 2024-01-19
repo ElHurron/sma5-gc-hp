@@ -8,12 +8,14 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="@dimen/distance_xlarge"
-        android:layout_height="@dimen/distance_xlarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pfeil"
+        android:scaleY="0.7"
+        android:scaleX="0.7"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/icon_back"
         android:layout_marginStart="@dimen/distance_small"
         android:layout_marginTop="@dimen/distance_xs"
         android:importantForAccessibility="no" />
