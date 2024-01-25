@@ -8,17 +8,15 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/pfeil"
-        android:scaleY="0.7"
-        android:scaleX="0.7"
-        android:backgroundTint="@color/white"
+        android:layout_width="@dimen/distance_xxlarge"
+        android:layout_height="@dimen/distance_xlarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/pfeil"
         android:layout_marginStart="@dimen/distance_small"
         android:layout_marginTop="@dimen/distance_xs"
-        android:importantForAccessibility="no" />
+        android:importantForAccessibility="no"
+        style="@style/Widget.AppCompat.Light.ActionButton"/>
 
     <TextView
         android:id="@+id/txvTitle"

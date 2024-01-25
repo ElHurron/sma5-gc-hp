@@ -31,56 +31,53 @@
         <ImageButton
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
+            android:backgroundTint="@color/my_light_primary"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txvTitle"
-            android:backgroundTint="@color/my_light_primary"
             app:layout_constraintBottom_toBottomOf="@id/txvTitle"
             android:layout_marginStart="@dimen/distance_large"
             android:src="@drawable/muellkuebel"
-            android:importantForAccessibility="no"/>
+            android:importantForAccessibility="no"
+            style="@style/Widget.AppCompat.Light.ActionButton"/>
 
         <ImageButton
             android:id="@+id/btnEdit"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="@dimen/distance_medium"
             android:layout_width="wrap_content"
-            android:backgroundTint="@color/my_light_primary"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/txvTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleY="0.48"
-            android:scaleX="0.48"
             app:layout_constraintStart_toEndOf="@id/btnDecline"
             android:src="@drawable/bleistift"
-            android:importantForAccessibility="no" />
+            android:importantForAccessibility="no"
+            android:scaleX="0.9"
+            android:scaleY="0.9"
+            style="@style/Widget.AppCompat.Light.ActionButton"/>
 
         <ImageButton
             android:id="@+id/btnDecline"
             android:layout_marginTop="@dimen/distance_medium"
             android:layout_width="wrap_content"
-            android:backgroundTint="@color/my_light_primary"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/txvTitle"
             app:layout_constraintStart_toEndOf="@id/btnAccept"
             app:layout_constraintEnd_toStartOf="@id/btnEdit"
-            android:scaleY="0.8"
-            android:scaleX="0.8"
             android:src="@drawable/x_umr"
-            android:importantForAccessibility="no" />
+            android:importantForAccessibility="no"
+            style="@style/Widget.AppCompat.Light.ActionButton"/>
 
         <ImageButton
             android:id="@+id/btnAccept"
             android:layout_marginTop="@dimen/distance_medium"
             android:layout_width="wrap_content"
-            android:backgroundTint="@color/my_light_primary"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/txvTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnDecline"
-            android:scaleX="0.8"
-            android:scaleY="0.8"
-            android:src="@drawable/haecken_umr"
-            android:importantForAccessibility="no" />
+            android:src="@drawable/haeckchen_umr"
+            android:importantForAccessibility="no"
+            style="@style/Widget.AppCompat.Light.ActionButton"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

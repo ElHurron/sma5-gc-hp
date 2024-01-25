@@ -58,12 +58,12 @@
         android:id="@+id/btnAddTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="@dimen/distance_small"
         android:layout_marginBottom="@dimen/distance_large"
         android:src="@drawable/plus"
-        android:importantForAccessibility="no" />
+        android:importantForAccessibility="no"
+        style="@style/Widget.AppCompat.Light.ActionButton"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

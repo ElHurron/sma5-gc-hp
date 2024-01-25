@@ -15,7 +15,10 @@
         android:layout_height="200dp"
         android:layout_marginTop="@dimen/distance_large"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/login_img"
+        android:src="@mipmap/icon_new"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:backgroundTint="@color/my_light_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

@@ -9,17 +9,15 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
+        android:layout_width="@dimen/distance_xxlarge"
+        android:layout_height="@dimen/distance_xlarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/pfeil"
-        android:scaleY="0.7"
-        android:scaleX="0.7"
         android:layout_marginStart="@dimen/distance_small"
         android:layout_marginTop="@dimen/distance_small"
-        android:importantForAccessibility="no" />
+        android:importantForAccessibility="no"
+        style="@style/Widget.AppCompat.Light.ActionButton"/>
 
 
     <TextView
@@ -38,7 +36,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvwTrainingsDetails"
         android:layout_width="0dp"
-        android:layout_height="430dp"
+        android:layout_height="500dp"
         android:layout_margin="@dimen/distance_medium"
         android:layout_marginTop="120dp"
         app:cardCornerRadius="@dimen/distance_medium"
@@ -56,14 +54,15 @@
 
             <ImageView
                 android:id="@+id/imgLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/distance_xxlarge"
+                android:layout_height="@dimen/distance_xxlarge"
                 android:src="@drawable/location"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="@null"
                 android:layout_marginStart="@dimen/distance_medium"
                 android:layout_marginTop="@dimen/distance_small"
+                style="@style/Widget.AppCompat.Light.ActionButton"
                 />
 
             <TextView
@@ -80,14 +79,15 @@
 
             <ImageView
                 android:id="@+id/imgCalendar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/distance_xxlarge"
+                android:layout_height="@dimen/distance_xxlarge"
                 android:src="@drawable/kalender"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txvLocation"
                 android:contentDescription="@null"
                 android:layout_marginStart="@dimen/distance_medium"
                 android:layout_marginTop="@dimen/distance_large"
+                style="@style/Widget.AppCompat.Light.ActionButton"
                 />
 
             <TextView
@@ -104,13 +104,14 @@
 
             <ImageView
                 android:id="@+id/imgTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/distance_xxlarge"
+                android:layout_height="@dimen/distance_xxlarge"
                 android:src="@drawable/uhr"
                 app:layout_constraintTop_toBottomOf="@id/imgCalendar"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/distance_medium"
                 android:layout_marginTop="@dimen/distance_medium"
+                style="@style/Widget.AppCompat.Light.ActionButton"
                 />
 
             <TextView
@@ -127,13 +128,14 @@
 
             <ImageView
                 android:id="@+id/imgGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/distance_xxlarge"
+                android:layout_height="@dimen/distance_xxlarge"
                 android:src="@drawable/gruppe"
                 app:layout_constraintTop_toBottomOf="@id/imgTime"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/distance_medium"
                 android:layout_marginTop="@dimen/distance_medium"
+                style="@style/Widget.AppCompat.Light.ActionButton"
                 />
 
             <TextView
@@ -164,13 +166,14 @@
 
             <ImageView
                 android:id="@+id/imgGroupDeclined"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/distance_xxlarge"
+                android:layout_height="@dimen/distance_xxlarge"
                 android:src="@drawable/gruppe_declined"
                 app:layout_constraintTop_toBottomOf="@id/imgGroup"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="@dimen/distance_medium"
                 android:layout_marginTop="@dimen/distance_medium"
+                style="@style/Widget.AppCompat.Light.ActionButton"
                 />
 
             <TextView
