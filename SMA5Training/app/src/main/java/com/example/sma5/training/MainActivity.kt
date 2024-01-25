@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         txtPassword = findViewById(R.id.fieldPassword)
         chbTrainer = findViewById(R.id.chbSignUpAsTrainer)
 
-        txtEmail.text.insert(0, "test@gmail.com")
-        txtPassword.text.insert(0, "xxxxxx")
+        //txtEmail.text.insert(0, "test@gmail.com")
+        //txtPassword.text.insert(0, "xxxxxx")
 
         btnSignUp.setOnClickListener{signUp()}
         btnSignIn.setOnClickListener{signIn()}
