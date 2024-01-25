@@ -85,7 +85,7 @@ class EditTrainingActivity : AppCompatActivity() {
 
         var newTraining = Training()
         newTraining.id = training.id
-        newTraining.creator = intent.getStringExtra(EditTrainingActivity.UserName)!!
+        newTraining.creator = training.creator
         newTraining.title = edtTrainingTitle.text.toString()
         newTraining.duration = edtDuration.text.toString().toInt()
 
@@ -97,6 +97,9 @@ class EditTrainingActivity : AppCompatActivity() {
 
         val calendar: Calendar = Calendar.getInstance()
         calendar.set(year, month, day, hour, minute, 0)
+
+        newTraining.acceptedUsers = training.acceptedUsers
+        newTraining.declinedUsers = training.declinedUsers
 
         newTraining.dateTime = SDF.format(calendar.time)
         newTraining.location = edtLocation.text.toString()
